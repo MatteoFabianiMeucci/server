@@ -19,11 +19,17 @@ public class Main {
         BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
         DataOutputStream out = new DataOutputStream(s.getOutputStream());
 
-        String stringRicevuta = in.readLine();
-        System.out.println("La stringa ricevuta: " + stringRicevuta);
-
-        String stringMaiuscola = stringRicevuta.toUpperCase();
-        out.writeBytes(stringMaiuscola + "\n");
+        String stringRicevuta;
+        do{
+            stringRicevuta = in.readLine();
+            
+            if(!stringRicevuta.equals("!")){
+                System.out.println("La stringa ricevuta: " + stringRicevuta);
+                String stringMaiuscola = stringRicevuta.toUpperCase();
+                out.writeBytes(stringMaiuscola + "\n");
+            }
+        } while(!stringRicevuta.equals("!"));
+        
 
         s.close();
         s1.close();
